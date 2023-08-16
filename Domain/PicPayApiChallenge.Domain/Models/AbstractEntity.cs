@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PicPayApiChallenge.Domain.Models
 {
-    public class AbstractEntity
+    public abstract class AbstractEntity
     {
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }
