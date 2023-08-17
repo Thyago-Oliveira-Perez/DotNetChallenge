@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PicPayApiChallenge.Domain.Models
+﻿namespace PicPayApiChallenge.Domain.Models
 {
     public abstract class AbstractEntity
     {

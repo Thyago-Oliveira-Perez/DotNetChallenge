@@ -9,5 +9,11 @@
             RandomKey = 3,
             Phone = 4
         }
+
+        public enum UserType
+        {
+            Client = 1,
+            ShopKeeper = 2
+        }
     }
 }
