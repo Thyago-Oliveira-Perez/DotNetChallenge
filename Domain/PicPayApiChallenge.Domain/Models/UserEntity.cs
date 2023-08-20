@@ -9,5 +9,6 @@ namespace PicPayApiChallenge.Domain.Models
         public string? CPF { get; set; }
         public string Password { get; set; }
         public UserType UserType { get; set; }
+        public ICollection<TransactionEntity> Transactions { get; set; }
     }
 }
