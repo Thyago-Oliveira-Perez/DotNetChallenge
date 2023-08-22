@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using PicPayApiChallenge.Domain.Models;
 
 namespace PicPayApiChallenge.Data.Context
