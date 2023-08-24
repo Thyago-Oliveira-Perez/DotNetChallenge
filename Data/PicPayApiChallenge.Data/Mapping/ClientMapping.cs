@@ -4,9 +4,9 @@ using PicPayApiChallenge.Domain.Models;
 
 namespace PicPayApiChallenge.Data.Mapping
 {
-    public class UserMapping : IEntityTypeConfiguration<UserEntity>
+    public class ClientMapping : IEntityTypeConfiguration<ClientEntity>
     {
-        public void Configure(EntityTypeBuilder<UserEntity> builder)
+        public void Configure(EntityTypeBuilder<ClientEntity> builder)
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).IsRequired().HasColumnType("varchar(50)");
@@ -14,7 +14,7 @@ namespace PicPayApiChallenge.Data.Mapping
             builder.Property(x => x.CPF).IsRequired().HasColumnType("varchar(11)").HasColumnType("unique");
             builder.Property(x => x.Password).IsRequired().HasColumnType("varchar(50)");
 
-            builder.ToTable("users");
+            builder.ToTable("clients");
         }
     }
 }
