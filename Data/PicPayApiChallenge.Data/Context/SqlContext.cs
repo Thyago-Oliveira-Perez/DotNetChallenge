@@ -3,13 +3,13 @@ using PicPayApiChallenge.Domain.Models;
 
 namespace PicPayApiChallenge.Data.Context
 {
-    public class Context : DbContext
+    public class SqlContext : DbContext
     {
-        public Context(DbContextOptions options) : base(options) { }
+        public SqlContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder model)
         {
-            model.ApplyConfigurationsFromAssembly(typeof(Context).Assembly);
+            model.ApplyConfigurationsFromAssembly(typeof(SqlContext).Assembly);
             base.OnModelCreating(model);
         }
 

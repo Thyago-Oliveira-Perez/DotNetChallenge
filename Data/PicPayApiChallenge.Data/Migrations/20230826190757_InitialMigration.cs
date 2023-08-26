@@ -20,8 +20,8 @@ namespace PicPayApiChallenge.Data.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Name = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Email = table.Column<string>(type: "unique", nullable: false),
-                    CPF = table.Column<string>(type: "unique", nullable: false),
+                    Email = table.Column<string>(type: "varchar(50)", nullable: false),
+                    CPF = table.Column<string>(type: "varchar(11)", nullable: false),
                     Password = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
@@ -39,8 +39,8 @@ namespace PicPayApiChallenge.Data.Migrations
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Name = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Email = table.Column<string>(type: "unique", nullable: false),
-                    CPF = table.Column<string>(type: "unique", nullable: false),
+                    Email = table.Column<string>(type: "varchar(50)", nullable: false),
+                    CPF = table.Column<string>(type: "varchar(11)", nullable: false),
                     Password = table.Column<string>(type: "varchar(50)", nullable: false)
                 },
                 constraints: table =>
@@ -77,6 +77,30 @@ namespace PicPayApiChallenge.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_clients_CPF",
+                table: "clients",
+                column: "CPF",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_clients_Email",
+                table: "clients",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_shopkeepers_CPF",
+                table: "shopkeepers",
+                column: "CPF",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_shopkeepers_Email",
+                table: "shopkeepers",
+                column: "Email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_transactions_ClientId",
