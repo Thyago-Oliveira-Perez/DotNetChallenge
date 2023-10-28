@@ -6,11 +6,11 @@ namespace PicPayApiChallenge.API.Controllers
 {
     [ApiController]
     [Route("transactions")]
-    public class TransferController : Controller
+    public class TransactionController : Controller
     {
         private readonly ITransferService _service;
 
-        public TransferController(ITransferService service)
+        public TransactionController(ITransferService service)
         {
             _service = service;
         }
