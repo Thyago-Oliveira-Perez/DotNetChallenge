@@ -1,22 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PicPayApiChallenge.Domain.DTO;
+using PicPayApiChallenge.Domain.Types;
 
 namespace PicPayApiChallenge.API.Controllers
 {
     [ApiController]
-    [Route("keys")]
+    [Route("transactions")]
     public class TransferController : Controller
     {
-        private readonly ILogger<TransferController> _logger;
+        private readonly ITransferService _service;
 
-        public TransferController(ILogger<TransferController> logger)
+        public TransferController(ITransferService service)
         {
-            _logger = logger;
+            _service = service;
         }
 
         [HttpPost]
-        public IActionResult SendPix(int id, IFormCollection collection)
+        public async Task<IActionResult> SendPix(TransactionDTO dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await this._service.SendPix(dto);
+
+                return CreatedAtAction(nameof(SendPix), new { id = 0 });
+
+            } catch (Exception ex) 
+            {
+                throw new Exception(ex.Message, ex);
+            }
         }
     }
 }
