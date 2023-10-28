@@ -10,9 +10,14 @@ namespace PicPayApiChallenge.Domain.Services
         private readonly IClientRepository _clientRepository;
         private readonly IShopKeeperRepository _shopKeeperRepository;
 
-        public TransactionService(ILogger<TransactionService> logger)
+        public TransactionService(
+            ILogger<TransactionService> logger, 
+            IClientRepository clientRepository, 
+            IShopKeeperRepository shopKeeperRepository)
         {
             this.logger = logger;
+            _clientRepository = clientRepository;
+            _shopKeeperRepository = shopKeeperRepository;
         }
 
         public async Task SendPix(TransactionDTO dto)
@@ -20,9 +25,10 @@ namespace PicPayApiChallenge.Domain.Services
             throw new NotImplementedException();
         }
 
-        private static bool IsValidTransaction(Guid payerId, Guid payeeId)
+        private bool IsValidTransaction(Guid payerId, Guid payeeId)
         {
-
+            var payer = this._clientRepository.GetById(payerId);
+            var payee = this._shopKeeperRepository.GetById(payeeId);
 
             return false;
         }

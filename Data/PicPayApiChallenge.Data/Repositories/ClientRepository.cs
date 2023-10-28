@@ -1,5 +1,7 @@
-﻿using PicPayApiChallenge.Data.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using PicPayApiChallenge.Data.Context;
 using PicPayApiChallenge.Domain.Interfaces;
+using PicPayApiChallenge.Domain.Models;
 
 namespace PicPayApiChallenge.Data.Repositories
 {
@@ -12,5 +14,7 @@ namespace PicPayApiChallenge.Data.Repositories
         {
             _sqlContext = sqlContext;
         }
+
+        public async Task<ClientEntity?> GetById(Guid id) => await _sqlContext.Clients.SingleOrDefaultAsync(x => x.Id == id);
     }
 }
