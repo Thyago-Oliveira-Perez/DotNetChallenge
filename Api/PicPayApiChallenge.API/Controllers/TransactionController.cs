@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PicPayApiChallenge.Domain.DTO;
-using PicPayApiChallenge.Domain.Types;
+using PicPayApiChallenge.Domain.Interfaces;
 
 namespace PicPayApiChallenge.API.Controllers
 {
@@ -8,9 +8,9 @@ namespace PicPayApiChallenge.API.Controllers
     [Route("transactions")]
     public class TransactionController : Controller
     {
-        private readonly ITransferService _service;
+        private readonly ITransactionService _service;
 
-        public TransactionController(ITransferService service)
+        public TransactionController(ITransactionService service)
         {
             _service = service;
         }

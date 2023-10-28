@@ -1,6 +1,4 @@
-﻿using static PicPayApiChallenge.Domain.Models.Enums;
-
-namespace PicPayApiChallenge.Domain.Models
+﻿namespace PicPayApiChallenge.Domain.Models
 {
     public abstract class PersonEntity : AbstractEntity
     {

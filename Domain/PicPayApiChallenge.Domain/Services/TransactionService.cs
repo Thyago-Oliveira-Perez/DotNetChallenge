@@ -1,14 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
 using PicPayApiChallenge.Domain.DTO;
-using PicPayApiChallenge.Domain.Types;
+using PicPayApiChallenge.Domain.Interfaces;
 
 namespace PicPayApiChallenge.Domain.Services
 {
-    public class TransferService : ITransferService
+    public class TransactionService : ITransactionService
     {
-        private readonly ILogger<TransferService> logger;
+        private readonly ILogger<TransactionService> logger;
+        private readonly IClientRepository _clientRepository;
+        private readonly IShopKeeperRepository _shopKeeperRepository;
 
-        public TransferService(ILogger<TransferService> logger)
+        public TransactionService(ILogger<TransactionService> logger)
         {
             this.logger = logger;
         }
@@ -16,6 +18,13 @@ namespace PicPayApiChallenge.Domain.Services
         public async Task SendPix(TransactionDTO dto)
         {
             throw new NotImplementedException();
+        }
+
+        private static bool IsValidTransaction(Guid payerId, Guid payeeId)
+        {
+
+
+            return false;
         }
     }
 }

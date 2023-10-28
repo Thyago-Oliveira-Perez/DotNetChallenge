@@ -1,8 +1,8 @@
 ﻿using PicPayApiChallenge.Domain.DTO;
 
-namespace PicPayApiChallenge.Domain.Types
+namespace PicPayApiChallenge.Domain.Interfaces
 {
-    public interface ITransferService
+    public interface ITransactionService
     {
         Task SendPix(TransactionDTO dto);
     }

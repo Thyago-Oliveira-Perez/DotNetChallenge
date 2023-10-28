@@ -1,4 +1,4 @@
-﻿namespace PicPayApiChallenge.Domain.Models
+﻿namespace PicPayApiChallenge.Domain.Enums
 {
     public class Enums
     {

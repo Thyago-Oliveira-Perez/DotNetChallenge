@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PicPayApiChallenge.Data.Context;
 using PicPayApiChallenge.Domain.Services;
-using PicPayApiChallenge.Domain.Types;
+using PicPayApiChallenge.Domain.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Add service to the container.
-builder.Services.AddTransient<ITransferService, TransferService>();
+builder.Services.AddTransient<ITransactionService, TransactionService>();
 
 // Add data base context to the container.
 builder.Services.AddDbContext<PicPayApiChallenge.Data.Context.SqlContext>(
