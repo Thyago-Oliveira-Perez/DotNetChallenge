@@ -27,8 +27,8 @@ namespace PicPayApiChallenge.Domain.Services
 
         private bool IsValidTransaction(Guid payerId, Guid payeeId)
         {
-            var payer = this._clientRepository.GetById(payerId);
-            var payee = this._shopKeeperRepository.GetById(payeeId);
+            var payer = this._clientRepository.Exists(payerId);
+            var payee = this._shopKeeperRepository.Exists(payeeId);
 
             return false;
         }

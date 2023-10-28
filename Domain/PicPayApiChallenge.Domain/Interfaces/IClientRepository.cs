@@ -2,8 +2,7 @@
 
 namespace PicPayApiChallenge.Domain.Interfaces
 {
-    public interface IClientRepository
+    public interface IClientRepository : IRepository<ClientEntity>
     {
-        public Task<ClientEntity?> GetById(Guid id);
     }
 }

@@ -2,8 +2,7 @@
 
 namespace PicPayApiChallenge.Domain.Interfaces
 {
-    public interface IShopKeeperRepository
+    public interface IShopKeeperRepository : IRepository<ShopKeeperEntity>
     {
-        public Task<ShopKeeperEntity?> GetById(Guid id);
     }
 }
