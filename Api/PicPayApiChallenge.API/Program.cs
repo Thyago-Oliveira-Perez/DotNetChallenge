@@ -2,17 +2,21 @@ using Microsoft.EntityFrameworkCore;
 using PicPayApiChallenge.Data.Context;
 using PicPayApiChallenge.Domain.Services;
 using PicPayApiChallenge.Domain.Interfaces;
+using PicPayApiChallenge.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add controllers to the container.
 builder.Services.AddControllers();
 
+// Add Repositories to the container.
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+
 // Add service to the container.
 builder.Services.AddTransient<ITransactionService, TransactionService>();
 
 // Add data base context to the container.
-builder.Services.AddDbContext<PicPayApiChallenge.Data.Context.SqlContext>(
+builder.Services.AddDbContext<SqlContext>(
     options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 

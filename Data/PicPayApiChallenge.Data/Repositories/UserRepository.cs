@@ -4,8 +4,8 @@ using PicPayApiChallenge.Domain.Models;
 
 namespace PicPayApiChallenge.Data.Repositories
 {
-    public class ShopKeeperRepository : BaseRepository<ShopKeeperEntity>, IShopKeeperRepository
+    public class UserRepository : BaseRepository<UserEntity>, IUserRepository
     {
-        public ShopKeeperRepository(SqlContext sqlContext) : base(sqlContext) { }
+        public UserRepository(SqlContext sqlContext) : base(sqlContext) { }
     }
 }

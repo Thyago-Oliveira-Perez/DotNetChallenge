@@ -2,7 +2,7 @@
 
 namespace PicPayApiChallenge.Domain.Interfaces
 {
-    public interface IShopKeeperRepository : IRepository<ShopKeeperEntity>
+    public interface IUserRepository : IRepository<UserEntity>
     {
     }
 }
