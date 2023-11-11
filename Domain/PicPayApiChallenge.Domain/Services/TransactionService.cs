@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using PicPayApiChallenge.Domain.DTO;
+using PicPayApiChallenge.Domain.Exceptions;
 using PicPayApiChallenge.Domain.Interfaces;
 
 namespace PicPayApiChallenge.Domain.Services
@@ -19,14 +20,20 @@ namespace PicPayApiChallenge.Domain.Services
 
         public async Task SendPix(TransactionDTO dto)
         {
-            throw new NotImplementedException();
+            var ( value, payer, payee ) = dto;
+
+            await IsValidTransaction(payer, value);
         }
 
-        private bool IsValidTransaction(Guid payerId, Guid payeeId)
+        private async Task<bool> IsValidTransaction(Guid payerId, decimal value)
         {
-            var payer = this._tradesmanRepository.Exists(payerId);
+            //if the payer is a trademan we cannot complete the transaction
+            if (await this._tradesmanRepository.Exists(payerId)) throw new InvalidTransactionException("A tradesman cannot send money to others.");
 
-            return false;
+            //payer have enough balance
+            if(await this._commonUserRepository.HasBalance(payerId, value)) throw new InvalidTransactionException("User don't have enough balance."); ;
+
+            return true;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace PicPayApiChallenge.Data.Mapping
             builder.Property(x => x.CPF).IsRequired().HasColumnType("varchar(11)");
             builder.Property(x => x.CNPJ).IsRequired().HasColumnType("varchar(19)");
             builder.Property(x => x.Password).IsRequired().HasColumnType("varchar(50)");
+            builder.Property(x => x.Balance).IsRequired().HasColumnType("decimal");
 
             //Unique fields
             builder.HasIndex(x => x.Email).IsUnique();
