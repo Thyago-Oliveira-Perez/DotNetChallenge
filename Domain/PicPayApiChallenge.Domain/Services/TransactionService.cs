@@ -7,15 +7,14 @@ namespace PicPayApiChallenge.Domain.Services
     public class TransactionService : ITransactionService
     {
         private readonly ILogger<TransactionService> logger;
-        private readonly ICommonUserRepository _userRepository;
+        private readonly ICommonUserRepository _commonUserRepository;
+        private readonly ITradesmanRepository _tradesmanRepository;
 
-        public TransactionService(
-            ILogger<TransactionService> logger,
-            ICommonUserRepository clientRepository
-            )
+        public TransactionService(ILogger<TransactionService> logger, ICommonUserRepository commonUserRepository, ITradesmanRepository tradesmanRepository)
         {
             this.logger = logger;
-            _userRepository = clientRepository;
+            _commonUserRepository = commonUserRepository;
+            _tradesmanRepository = tradesmanRepository;
         }
 
         public async Task SendPix(TransactionDTO dto)
@@ -23,11 +22,11 @@ namespace PicPayApiChallenge.Domain.Services
             throw new NotImplementedException();
         }
 
-        //private bool IsValidTransaction(Guid payerId, Guid payeeId)
-        //{
-        //    var payer = this._userRepository.Exists(payerId);
+        private bool IsValidTransaction(Guid payerId, Guid payeeId)
+        {
+            var payer = this._tradesmanRepository.Exists(payerId);
 
-        //    return false;
-        //}
+            return false;
+        }
     }
 }

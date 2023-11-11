@@ -14,35 +14,35 @@ namespace PicPayApiChallenge.Data.Repositories
             _dbSet = _context.Set<TEntity>();
         }
 
-        public TEntity? GetById(Guid id)
+        public async Task<TEntity?> GetById(Guid id)
         {
-            return _dbSet.Find(id);
+            return await _dbSet.FindAsync(id);
         }
 
-        public bool Exists(Guid id)
+        public async Task<bool> Exists(Guid id)
         {
-            return GetById(id) != null;
+            return await GetById(id) != null;
         }
 
-        public void Add(TEntity entity)
+        public async Task Add(TEntity entity)
         {
-            _dbSet.Add(entity);
-            _context.SaveChanges();
+            await _dbSet.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(TEntity entity)
+        public async Task Update(TEntity entity)
         {
             _dbSet.Update(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(Guid id)
+        public async Task Delete(Guid id)
         {
-            var entity = GetById(id);
+            var entity = await GetById(id);
             if (entity != null)
             {
                 _dbSet.Remove(entity);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }
