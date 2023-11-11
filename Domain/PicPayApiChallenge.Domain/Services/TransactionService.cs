@@ -7,11 +7,11 @@ namespace PicPayApiChallenge.Domain.Services
     public class TransactionService : ITransactionService
     {
         private readonly ILogger<TransactionService> logger;
-        private readonly IUserRepository _userRepository;
+        private readonly ICommonUserRepository _userRepository;
 
         public TransactionService(
             ILogger<TransactionService> logger,
-            IUserRepository clientRepository
+            ICommonUserRepository clientRepository
             )
         {
             this.logger = logger;

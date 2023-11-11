@@ -10,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Add Repositories to the container.
-builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<ICommonUserRepository, CommonUserRepository>();
+builder.Services.AddTransient<ITradesmanRepository, TrandesmanRepository>();
 
 // Add service to the container.
 builder.Services.AddTransient<ITransactionService, TransactionService>();

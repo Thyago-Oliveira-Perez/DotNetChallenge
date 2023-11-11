@@ -9,11 +9,5 @@
             RandomKey = 3,
             Phone = 4
         }
-
-        public enum UserType
-        {
-            client = 1,
-            shopkeeper = 2,
-        }
     }
 }

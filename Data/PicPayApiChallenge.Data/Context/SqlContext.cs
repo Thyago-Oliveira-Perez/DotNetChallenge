@@ -13,7 +13,8 @@ namespace PicPayApiChallenge.Data.Context
             base.OnModelCreating(model);
         }
 
-        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<CommonUserEntity> CommonUsers { get; set; }
+        public DbSet<TradesmanEntity> Tradesman { get; set; }
         public DbSet<TransactionEntity> Transactions { get; set; }
     }
 }
