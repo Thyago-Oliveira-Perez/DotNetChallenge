@@ -6,7 +6,7 @@ PicPayApiChallenge.
 
 - Visual Studio
 - Docker Engine 17.06.0+
-- .NET 6
+- .NET 7
 
 ## Docker
 

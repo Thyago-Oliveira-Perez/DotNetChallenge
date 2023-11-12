@@ -31,7 +31,7 @@ namespace PicPayApiChallenge.Domain.Services
             if (await this._tradesmanRepository.Exists(payerId)) throw new InvalidTransactionException("A tradesman cannot send money to others.");
 
             //payer have enough balance
-            if(await this._commonUserRepository.HasBalance(payerId, value)) throw new InvalidTransactionException("User don't have enough balance."); ;
+            if(await this._commonUserRepository.HasBalance(payerId, value)) throw new InvalidTransactionException("User don't have enough balance.");
 
             return true;
         }
