@@ -13,10 +13,10 @@ namespace PicPayApiChallenge.Data.Mapping
             builder.Property(x => x.Email).IsRequired().HasColumnType("varchar(50)");
             builder.Property(x => x.CPF).IsRequired().HasColumnType("varchar(14)");
             builder.Property(x => x.Password).IsRequired().HasColumnType("varchar(50)");
-            builder.Property(x => x.Balance).IsRequired().HasColumnType("decimal");
-            builder.Property(x => x.CreatedAt).IsRequired().HasColumnType("timestamp");
-            builder.Property(x => x.UpdatedAt).IsRequired(false).HasColumnType("timestamp");
-            builder.Property(x => x.DeletedAt).IsRequired(false).HasColumnType("timestamp");
+            builder.Property(x => x.Balance).IsRequired().HasColumnType("money");
+            builder.Property(x => x.CreatedAt).IsRequired().HasColumnType("date");
+            builder.Property(x => x.UpdatedAt).IsRequired(false).HasColumnType("date");
+            builder.Property(x => x.DeletedAt).IsRequired(false).HasColumnType("date");
 
             //Unique fields
             builder.HasIndex(x => x.Email).IsUnique();

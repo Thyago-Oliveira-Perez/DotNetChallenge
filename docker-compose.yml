@@ -8,31 +8,15 @@ networks:
         - subnet: 172.70.0.0/16
 
 services:
-  postgres:
-    container_name: postgres
-    image: postgres
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - APP_DB_USER=postgres
-      - APP_DB_PASS=postgres
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
     ports:
-      - '5432:5432'
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "aoscir@@123-94847"
     networks:
       picPayChallengeNetwork:
         ipv4_address: 172.70.0.2
-    restart: on-failure
-
-  pgadmin:
-    container_name: pgadmin
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "pgadmin4@pgadmin.org"
-      PGADMIN_DEFAULT_PASSWORD: "admin"
-      PGADMIN_CONFIG_SERVER_MODE: "False"
-    ports:
-      - "5050:80"
-    networks:
-      picPayChallengeNetwork:
-        ipv4_address: 172.70.0.3
     restart: on-failure

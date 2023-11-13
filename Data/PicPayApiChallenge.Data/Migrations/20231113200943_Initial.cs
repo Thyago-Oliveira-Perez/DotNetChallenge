@@ -15,15 +15,15 @@ namespace PicPayApiChallenge.Data.Migrations
                 name: "commonUsers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "date", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "date", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "date", nullable: true),
                     Name = table.Column<string>(type: "varchar(50)", nullable: false),
                     Email = table.Column<string>(type: "varchar(50)", nullable: false),
                     CPF = table.Column<string>(type: "varchar(14)", nullable: false),
                     Password = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Balance = table.Column<decimal>(type: "decimal", nullable: false)
+                    Balance = table.Column<decimal>(type: "money", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,16 +34,16 @@ namespace PicPayApiChallenge.Data.Migrations
                 name: "tradesman",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CNPJ = table.Column<string>(type: "varchar(18)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "timestamp", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "date", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "date", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "date", nullable: true),
                     Name = table.Column<string>(type: "varchar(50)", nullable: false),
                     Email = table.Column<string>(type: "varchar(50)", nullable: false),
                     CPF = table.Column<string>(type: "varchar(14)", nullable: false),
                     Password = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Balance = table.Column<decimal>(type: "decimal", nullable: false)
+                    Balance = table.Column<decimal>(type: "money", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,14 +54,14 @@ namespace PicPayApiChallenge.Data.Migrations
                 name: "transactions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,0)", nullable: false),
                     Date = table.Column<DateTime>(type: "date", nullable: false),
-                    CommonUserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    TradesmanId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    DeletedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    CommonUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TradesmanId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
