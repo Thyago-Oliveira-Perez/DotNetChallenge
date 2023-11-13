@@ -35,3 +35,4 @@ After every Entity change, could be: edit, create, delete, etc, you must create 
 
 - Open the 'Package Manager Console' and run 'Add-Migration [Migration name] -Verbose'
 - Then you need to update the database, with 'Update-Database -Verbose'
+- To remove migrations 'Remove-Migration [migration name]'

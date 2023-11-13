@@ -12,8 +12,8 @@ using PicPayApiChallenge.Data.Context;
 namespace PicPayApiChallenge.Data.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    [Migration("20231112001202_update-cpf-cnpj-length")]
-    partial class updatecpfcnpjlength
+    [Migration("20231113144818_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,10 +39,10 @@ namespace PicPayApiChallenge.Data.Migrations
                         .HasColumnType("varchar(14)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
-                    b.Property<DateTime>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -56,8 +56,8 @@ namespace PicPayApiChallenge.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -88,10 +88,10 @@ namespace PicPayApiChallenge.Data.Migrations
                         .HasColumnType("varchar(14)");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp");
 
-                    b.Property<DateTime>("DeletedAt")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -105,8 +105,8 @@ namespace PicPayApiChallenge.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp");
 
                     b.HasKey("Id");
 
@@ -141,13 +141,13 @@ namespace PicPayApiChallenge.Data.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
 
-                    b.Property<DateTime>("DeletedAt")
+                    b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("TradesmanId")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
