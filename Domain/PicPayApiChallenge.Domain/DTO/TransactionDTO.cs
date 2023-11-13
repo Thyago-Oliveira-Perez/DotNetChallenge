@@ -1,10 +1,15 @@
-﻿namespace PicPayApiChallenge.Domain.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PicPayApiChallenge.Domain.DTO
 {
     public class TransactionDTO
     {
-        decimal Value { get; }
-        Guid Payer { get; }
-        Guid Payee { get; }
+        [Required]
+        public decimal Value { get; set; }
+        [Required]
+        public Guid Payer { get; set; }
+        [Required]
+        public Guid Payee { get; set; }
 
         public void Deconstruct(out decimal value, out Guid payer, out Guid payee)
         {

@@ -3,6 +3,7 @@ using PicPayApiChallenge.Data.Context;
 using PicPayApiChallenge.Domain.Services;
 using PicPayApiChallenge.Domain.Interfaces;
 using PicPayApiChallenge.Data.Repositories;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,10 @@ builder.Services.AddDbContext<SqlContext>(
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(s =>
+{
+    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Pic Pay Api Challenge", Version = "v1" });
+});
 
 var app = builder.Build();
 
