@@ -5,6 +5,7 @@ using PicPayApiChallenge.Data.Repositories;
 using Microsoft.OpenApi.Models;
 using PicPayApiChallenge.Domain.Contracts.Repositories;
 using PicPayApiChallenge.Domain.Contracts.Services;
+using PicPayApiChallenge.Domain.Constants;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,9 +21,12 @@ builder.Services.AddTransient<ITransactionService, TransactionService>();
 builder.Services.AddTransient<ICommonUserService, CommonUserService>();
 builder.Services.AddTransient<ITradesmanService, TradesmanService>();
 
+builder.Services.Configure<Logging>(builder.Configuration.GetSection("Logging"));
+builder.Services.Configure<ExternalUrls>(builder.Configuration.GetSection("ExternalUrls"));
+
 // Add data base context to the container.
 builder.Services.AddDbContext<SqlContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection")));
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
