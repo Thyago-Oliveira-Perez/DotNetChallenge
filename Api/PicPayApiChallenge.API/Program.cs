@@ -17,6 +17,8 @@ builder.Services.AddTransient<ITradesmanRepository, TrandesmanRepository>();
 
 // Add service to the container.
 builder.Services.AddTransient<ITransactionService, TransactionService>();
+builder.Services.AddTransient<ICommonUserService, CommonUserService>();
+builder.Services.AddTransient<ITradesmanService, TradesmanService>();
 
 // Add data base context to the container.
 builder.Services.AddDbContext<SqlContext>(
