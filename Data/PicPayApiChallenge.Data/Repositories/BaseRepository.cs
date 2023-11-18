@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PicPayApiChallenge.Domain.Interfaces;
+using PicPayApiChallenge.Domain.Contracts.Repositories;
 
 namespace PicPayApiChallenge.Data.Repositories
 {

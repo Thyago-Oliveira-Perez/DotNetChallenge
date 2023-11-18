@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PicPayApiChallenge.Domain.Contracts.Services;
 using PicPayApiChallenge.Domain.DTO;
-using PicPayApiChallenge.Domain.Interfaces;
 
 namespace PicPayApiChallenge.API.Controllers
 {

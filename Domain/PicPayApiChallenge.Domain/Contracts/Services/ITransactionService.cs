@@ -1,6 +1,6 @@
 ﻿using PicPayApiChallenge.Domain.DTO;
 
-namespace PicPayApiChallenge.Domain.Interfaces
+namespace PicPayApiChallenge.Domain.Contracts.Services
 {
     public interface ITransactionService
     {

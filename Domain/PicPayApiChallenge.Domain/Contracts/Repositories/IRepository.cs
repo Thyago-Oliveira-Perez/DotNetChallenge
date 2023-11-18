@@ -1,4 +1,4 @@
-﻿namespace PicPayApiChallenge.Domain.Interfaces
+﻿namespace PicPayApiChallenge.Domain.Contracts.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {

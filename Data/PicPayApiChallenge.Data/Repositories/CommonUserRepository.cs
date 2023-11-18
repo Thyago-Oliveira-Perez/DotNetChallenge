@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PicPayApiChallenge.Data.Context;
-using PicPayApiChallenge.Domain.Interfaces;
+using PicPayApiChallenge.Domain.Contracts.Repositories;
 using PicPayApiChallenge.Domain.Models;
 
 namespace PicPayApiChallenge.Data.Repositories

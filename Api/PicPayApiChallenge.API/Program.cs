@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using PicPayApiChallenge.Data.Context;
 using PicPayApiChallenge.Domain.Services;
-using PicPayApiChallenge.Domain.Interfaces;
 using PicPayApiChallenge.Data.Repositories;
 using Microsoft.OpenApi.Models;
+using PicPayApiChallenge.Domain.Contracts.Repositories;
+using PicPayApiChallenge.Domain.Contracts.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
