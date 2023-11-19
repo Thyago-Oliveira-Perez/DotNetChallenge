@@ -4,10 +4,7 @@
     {
         public decimal? Amount { get; set; }
         public DateTime Date { get; set; }
-        public Guid CommonUserId { get; set; }
-        public Guid TradesmanId { get; set; }
-    
-        public virtual CommonUserEntity CommonUser { get; set; }
-        public virtual TradesmanEntity Tradesman { get; set; }
+        public Guid PayerId { get; set; }
+        public Guid PayeeId { get; set; }
     }
 }

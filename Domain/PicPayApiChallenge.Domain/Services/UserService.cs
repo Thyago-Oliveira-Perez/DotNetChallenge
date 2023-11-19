@@ -3,11 +3,11 @@ using PicPayApiChallenge.Domain.Contracts.Services;
 
 namespace PicPayApiChallenge.Domain.Services
 {
-    public class CommonUserService : ICommonUserService
+    public class UserService : IUserService
     {
-        private readonly ICommonUserRepository _repository;
+        private readonly IUserRepository _repository;
 
-        public CommonUserService(ICommonUserRepository repository)
+        public UserService(IUserRepository repository)
         {
             _repository = repository;
         }
@@ -15,6 +15,11 @@ namespace PicPayApiChallenge.Domain.Services
         public async Task<bool> HasEnoughBalance(Guid id, decimal value)
         {
            return await this._repository.HasBalance(id, value);
+        }
+
+        public async Task<bool> Exists(Guid id)
+        {
+            return await this._repository.Exists(id);
         }
     }
 }

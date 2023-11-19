@@ -5,9 +5,9 @@ using PicPayApiChallenge.Domain.Models;
 
 namespace PicPayApiChallenge.Data.Repositories
 {
-    public class CommonUserRepository : BaseRepository<CommonUserEntity>, ICommonUserRepository
+    public class UserRepository : BaseRepository<UserEntity>, IUserRepository
     {
-        public CommonUserRepository(SqlContext sqlContext) : base(sqlContext) { }
+        public UserRepository(SqlContext sqlContext) : base(sqlContext) { }
 
         public async Task<bool> HasBalance(Guid id, decimal value)
         {

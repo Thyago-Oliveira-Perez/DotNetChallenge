@@ -11,10 +11,8 @@ namespace PicPayApiChallenge.Data.Mapping
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Amount).IsRequired().HasColumnType("decimal");
             builder.Property(x => x.Date).IsRequired().HasColumnType("date");
-            builder.HasOne(x => x.CommonUser).WithMany(x => x.Transactions).IsRequired();
-            builder.Property(x => x.CommonUserId).IsRequired();
-            builder.HasOne(x => x.Tradesman).WithMany(x => x.Transactions).IsRequired();
-            builder.Property(x => x.TradesmanId).IsRequired();
+            builder.Property(x => x.PayerId).IsRequired();
+            builder.Property(x => x.PayeeId).IsRequired();
 
             builder.ToTable("transactions");
         }

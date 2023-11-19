@@ -2,7 +2,8 @@
 
 namespace PicPayApiChallenge.Domain.Contracts.Repositories
 {
-    public interface ITradesmanRepository : IRepository<TradesmanEntity>
+    public interface IUserRepository : IRepository<UserEntity>
     {
+        Task<bool> HasBalance(Guid id, decimal value);
     }
 }
