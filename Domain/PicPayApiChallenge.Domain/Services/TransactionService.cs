@@ -7,6 +7,7 @@ using PicPayApiChallenge.Domain.DTO;
 using PicPayApiChallenge.Domain.Enums;
 using PicPayApiChallenge.Domain.Exceptions;
 using PicPayApiChallenge.Domain.Models;
+using static PicPayApiChallenge.Domain.Enums.Enums;
 
 namespace PicPayApiChallenge.Domain.Services
 {
@@ -14,14 +15,16 @@ namespace PicPayApiChallenge.Domain.Services
     {
         private readonly ILogger<TransactionService> _logger;
         private readonly IUserService _userService;
+        private readonly IEmailService _emailService;
         private readonly ITransactionRepository _repository;
-        private static string _authorizationUrl;
+        private static string _authorizeTransactionMock;
 
-        public TransactionService(ILogger<TransactionService> logger, IUserService commonUserService, IOptions<ExternalUrls> options, ITransactionRepository repository)
+        public TransactionService(ILogger<TransactionService> logger, IUserService commonUserService, IEmailService emailService, IOptions<ExternalUrls> options, ITransactionRepository repository)
         {
             _logger = logger;
             _userService = commonUserService;
-            _authorizationUrl = options.Value.AuthorizationUrl;
+            _emailService = emailService;
+            _authorizeTransactionMock = options.Value.AuthorizeTransactionMock;
             _repository = repository;
         }
 
@@ -34,31 +37,29 @@ namespace PicPayApiChallenge.Domain.Services
             await IsAuthorizedTransaction();
 
             await CreateTransaction(payer, payee, value);
+
+            await _emailService.SendEmailAsync(payee);
         }
 
-        private async Task<bool> IsValidTransaction(Guid payerId, decimal value)
+        private async Task IsValidTransaction(Guid payerId, decimal value)
         {
-            //if the payer is a trademan we cannot complete the transaction
-            if (await this._userService.Exists(payerId)) throw new InvalidTransactionException("A tradesman cannot send money to others.");
+            var payerType = await this._userService.GetUserType(payerId);
 
-            //payer have enough balance
+            if (payerType.Equals(UserType.Tradesman)) throw new InvalidTransactionException("A tradesman cannot send money to others.");
+
             if(!await this._userService.HasEnoughBalance(payerId, value)) throw new InvalidTransactionException("User don't have enough balance.");
-
-            return true;
         }
 
-        private static async Task<bool> IsAuthorizedTransaction()
+        private static async Task IsAuthorizedTransaction()
         {
             HttpClient _httpClient = new();
 
-            var response = await _httpClient.GetAsync(_authorizationUrl);
+            var response = await _httpClient.GetAsync(_authorizeTransactionMock);
 
             if (!response.Content.ReadAsStringAsync().Result.Contains(AuthorizationResponse.Authorized))
             {
                 throw new UnauthorizedTransactionException();
             }
-
-            return true;
         }
 
         private async Task CreateTransaction(Guid payer, Guid payee, decimal amount)

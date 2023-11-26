@@ -19,6 +19,7 @@ builder.Services.AddTransient<ITransactionRepository, TransactionRepository>();
 // Add service to the container.
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<ITransactionService, TransactionService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 builder.Services.Configure<Logging>(builder.Configuration.GetSection("Logging"));
 builder.Services.Configure<ExternalUrls>(builder.Configuration.GetSection("ExternalUrls"));

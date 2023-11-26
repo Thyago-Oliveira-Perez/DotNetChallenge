@@ -1,5 +1,7 @@
 ﻿using PicPayApiChallenge.Domain.Contracts.Repositories;
 using PicPayApiChallenge.Domain.Contracts.Services;
+using PicPayApiChallenge.Domain.Models;
+using static PicPayApiChallenge.Domain.Enums.Enums;
 
 namespace PicPayApiChallenge.Domain.Services
 {
@@ -17,9 +19,14 @@ namespace PicPayApiChallenge.Domain.Services
            return await this._repository.HasBalance(id, value);
         }
 
-        public async Task<bool> Exists(Guid id)
+        public async Task<UserType?> GetUserType(Guid id)
         {
-            return await this._repository.Exists(id);
+            return (await this._repository.GetById(id))?.Type;
+        }
+
+        public async Task<UserEntity?> GetUserById(Guid id)
+        {
+            return await this._repository.GetById(id);
         }
     }
 }

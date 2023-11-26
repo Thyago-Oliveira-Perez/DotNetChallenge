@@ -1,8 +1,12 @@
-﻿namespace PicPayApiChallenge.Domain.Contracts.Services
+﻿using PicPayApiChallenge.Domain.Models;
+using static PicPayApiChallenge.Domain.Enums.Enums;
+
+namespace PicPayApiChallenge.Domain.Contracts.Services
 {
     public interface IUserService
     {
         Task<bool> HasEnoughBalance(Guid id, decimal balance);
-        Task<bool> Exists(Guid id);
+        Task<UserType?> GetUserType(Guid id);
+        Task<UserEntity?> GetUserById(Guid id);
     }
 }

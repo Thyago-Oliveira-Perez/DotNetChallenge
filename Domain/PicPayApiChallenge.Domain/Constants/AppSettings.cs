@@ -14,7 +14,8 @@
 
     public class ExternalUrls 
     {
-        public string AuthorizationUrl { get; set; }
+        public string AuthorizeTransactionMock { get; set; }
+        public string EmailServiceMock { get; set; }
     }
 
     public class ConnectionStrings
