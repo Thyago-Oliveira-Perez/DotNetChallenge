@@ -1,4 +1,4 @@
-﻿namespace PicPayApiChallenge.Domain.Exceptions
+﻿namespace PicPayApiChallenge.Domain.Exceptions.Transaction
 {
     public class UnauthorizedTransactionException : Exception
     {

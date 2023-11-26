@@ -5,7 +5,7 @@ using PicPayApiChallenge.Domain.Contracts.Repositories;
 using PicPayApiChallenge.Domain.Contracts.Services;
 using PicPayApiChallenge.Domain.DTO;
 using PicPayApiChallenge.Domain.Enums;
-using PicPayApiChallenge.Domain.Exceptions;
+using PicPayApiChallenge.Domain.Exceptions.Transaction;
 using PicPayApiChallenge.Domain.Models;
 using static PicPayApiChallenge.Domain.Enums.Enums;
 
@@ -35,6 +35,8 @@ namespace PicPayApiChallenge.Domain.Services
             await IsValidTransaction(payer, value);
 
             await IsAuthorizedTransaction();
+
+            await ManageBalance(payer, payee, value);
 
             await CreateTransaction(payer, payee, value);
 
@@ -79,6 +81,12 @@ namespace PicPayApiChallenge.Domain.Services
                 _logger.LogError(ex.Message);
                 throw new CreateTransactionException(ex.Message);
             }
+        }
+
+        private async Task ManageBalance(Guid payer, Guid payee, decimal value)
+        {
+            await _userService.IncreaseBalance(payee, value);
+            await _userService.DecreaseBalance(payer, value);
         }
     }
 }

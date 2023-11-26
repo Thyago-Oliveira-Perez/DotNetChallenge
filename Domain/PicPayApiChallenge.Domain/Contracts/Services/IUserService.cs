@@ -8,5 +8,7 @@ namespace PicPayApiChallenge.Domain.Contracts.Services
         Task<bool> HasEnoughBalance(Guid id, decimal balance);
         Task<UserType?> GetUserType(Guid id);
         Task<UserEntity?> GetUserById(Guid id);
+        Task IncreaseBalance(Guid id, decimal value);
+        Task DecreaseBalance(Guid id, decimal value);
     }
 }

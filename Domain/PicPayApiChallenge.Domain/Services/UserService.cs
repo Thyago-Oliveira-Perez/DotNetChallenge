@@ -28,5 +28,23 @@ namespace PicPayApiChallenge.Domain.Services
         {
             return await this._repository.GetById(id);
         }
+
+        public async Task IncreaseBalance(Guid id, decimal value)
+        {
+            var user = await this._repository.GetById(id);
+
+            user.Balance += value;
+
+            await this._repository.Update(user);
+        }
+
+        public async Task DecreaseBalance(Guid id, decimal value)
+        {
+            var user = await this._repository.GetById(id);
+
+            user.Balance -= value;
+
+            await this._repository.Update(user);
+        }
     }
 }
